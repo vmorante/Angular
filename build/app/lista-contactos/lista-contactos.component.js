@@ -13,7 +13,7 @@ var ListaContactosComponent = (function () {
     function ListaContactosComponent() {
         this.seleccionado = new core_1.EventEmitter();
     }
-    ListaContactosComponent.prototype.notificarContactoSelecionado = function (contacto) {
+    ListaContactosComponent.prototype.notificarContactoSeleccionado = function (contacto) {
         this.seleccionado.emit(contacto);
     };
     return ListaContactosComponent;
@@ -29,7 +29,8 @@ __decorate([
 ListaContactosComponent = __decorate([
     core_1.Component({
         selector: 'lista-contactos',
-        templateUrl: '/app/lista-contactos/lista-contactos.component.html'
+        templateUrl: '/app/lista-contactos/lista-contactos.component.html',
+        styleUrls: ['app/lista-contactos/lista-contactos.component.css']
     })
 ], ListaContactosComponent);
 exports.ListaContactosComponent = ListaContactosComponent;

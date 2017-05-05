@@ -1,30 +1,49 @@
+import { Injectable } from '@angular/core';
 import { Contacto } from '../entidades/contacto';
-import{ Injectable} from '@angular/core';
-
 
 @Injectable()
-export class ContactosService{ 
+export class ContactosService {
 
+  //constructor(nombre: string) {
+  constructor() {
 
-    obtenerContactos(): Contacto[]{
-        return [
-  {
-    nombre:"Steve Jobs",
-    email: 'steve.jobs@apple.com',
-    telefono:'656232389'
-  },
-  {
-    nombre:"Bill Gates",
-    email:'bill.gates@microsoft.com',
-    telefono: '890328822'
-  },
-  {
-    nombre: 'Elon musk',
-    email: 'elon.musk@tesla.com',
-    telefono: '899283929'
   }
-];
 
-    }
+  obtenerContactos(): Contacto[] {
+    return [
+     Contacto.desdeJSON( {
+        id:1,
+        nombre: 'Steve',
+        apellidos:'Jobs',
+        email: 'steve.jobs@apple.com',
+        telefono: '64237846246',
+        twitter:'@steveJobs',
+        facebook :'steveJobs',
+        avatar :''
+      }),
+     Contacto.desdeJSON(  {
+        id:2,
+        nombre: 'Bill',
+        apellidos:'Gates',
+        email: 'bill.gates@microsoft.com',
+        telefono: '21878216381',
+        twitter: 'billgates',
+        facebook:'billgates',
+        avatar :''
+
+      }),
+      Contacto.desdeJSON( {
+        id:3,
+        nombre: 'Elon ',
+        apellidos: 'Musk',
+        email: 'elon.musk@tesla.com',
+        telefono: '981293998711289',
+        twitter:'elonmusk',
+        facebook :'elonmusk',
+        avatar :''
+
+      })
+    ];
+  }
 
 }

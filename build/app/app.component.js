@@ -18,15 +18,18 @@ var AppComponent = (function () {
         this.listaContactos = this._contactosService.obtenerContactos();
     };
     AppComponent.prototype.mostrarDetalles = function (contacto) {
-        console.log('contacto seleccionado', contacto);
         this.contactoSeleccionado = contacto;
+    };
+    AppComponent.prototype.navegarRuta = function (ruta) {
+        console.log('navegar', ruta);
+        window.open(ruta, '_blank');
     };
     return AppComponent;
 }());
 AppComponent = __decorate([
     core_1.Component({
         selector: 'my-app',
-        templateUrl: 'app/app.component.html',
+        templateUrl: '/app/app.component.html'
     }),
     __metadata("design:paramtypes", [contactos_service_1.ContactosService])
 ], AppComponent);

@@ -2,30 +2,28 @@ import { Component, OnInit } from '@angular/core';
 import { Contacto } from './entidades/contacto';
 import { ContactosService } from './servicios/contactos.service';
 
-
 @Component({
   selector: 'my-app',
-  templateUrl:'app/app.component.html',
-  
+  templateUrl: '/app/app.component.html'
 })
-export class AppComponent  implements OnInit{
- 
+export class AppComponent implements OnInit {
 
-  
-listaContactos:Contacto[];
 
-contactoSeleccionado :Contacto;
+  listaContactos: Contacto[];
 
-constructor(private _contactosService: ContactosService ){}
-  
- ngOnInit(): void{
-   this.listaContactos =this._contactosService.obtenerContactos();
+  contactoSeleccionado: Contacto;
 
- }
+  constructor( private _contactosService: ContactosService) {}
 
-mostrarDetalles(contacto:Contacto):void{
-  console.log('contacto seleccionado',contacto);
-  this.contactoSeleccionado = contacto;
-}
-  
+  ngOnInit(): void {
+    this.listaContactos = this._contactosService.obtenerContactos();
+  }
+
+  mostrarDetalles(contacto: Contacto): void {
+    this.contactoSeleccionado = contacto;
+  }
+  navegarRuta(ruta:string){
+    console.log('navegar',ruta);
+    window.open(ruta,'_blank');
+  }
 }

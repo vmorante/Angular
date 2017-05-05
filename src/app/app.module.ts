@@ -3,13 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { AppComponent }  from './app.component';
-import {CajaComponent}   from './ejemplos/caja.component';
-import {EjemploBindingComponent} from './ejemplos/ejemplo-binding.component';
-import {EjemplosComponentesComponent} from './ejemplos/ejemplos-componentes.component';
+import { CajaComponent } from './ejemplos/caja.component';
+import { EjemplosBindingComponent} from './ejemplos/ejemplos-binding.component';
+import { EjemplosComponentesComponent} from './ejemplos/ejemplos-componentes.component';
 import { ListaContactosComponent } from './lista-contactos/lista-contactos.component';
 import { ContactosService } from './servicios/contactos.service';
 import { DetallesContactoComponent } from './detalles-contacto/detalles-contacto.component';
-
+import { Servicio1, Servicio2Provider, EjemplosInyeccionComponent } from './ejemplos/ejemplos-inyeccion.component';
 
 @NgModule({
   imports: [ // metemos todos los módulos que necesita mi app
@@ -19,13 +19,16 @@ import { DetallesContactoComponent } from './detalles-contacto/detalles-contacto
   declarations: [ // metemos todos los componentes, directivas y pipes
     AppComponent,
     CajaComponent,
-    EjemploBindingComponent,
+    EjemplosBindingComponent,
     EjemplosComponentesComponent,
     ListaContactosComponent,
-    DetallesContactoComponent
+    DetallesContactoComponent,
+    EjemplosInyeccionComponent
   ],
   providers: [ // metemos los servicios
-  ContactosService
+    ContactosService,
+    Servicio1, // este servicio tiene @Injectable
+    Servicio2Provider
   ],
   bootstrap: [ // componente raiz de enuestra app
     AppComponent

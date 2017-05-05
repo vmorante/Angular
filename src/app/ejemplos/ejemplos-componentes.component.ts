@@ -1,16 +1,13 @@
-import {Component}  from '@angular/core'
- 
- 
- @Component({
-     selector:'ejemplos-componentes',
-     templateUrl:'/app/ejemplos/ejemplos-componentes.component.html'
- })
+import { Component } from '@angular/core';
 
- export class EjemplosComponentesComponent{
+@Component({
+  selector: 'ejemplos-componentes',
+  templateUrl: '/app/ejemplos/ejemplos-componentes.component.html'
+})
+export class EjemplosComponentesComponent {
 
- 
-  escribeMensaje(mensaje:string){
+  escribeMensaje(mensaje: string) {
     console.log(mensaje);
   }
 
- }
+}

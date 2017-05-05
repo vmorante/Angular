@@ -1,15 +1,15 @@
 # Agenda y ejemplos
 
 Repositorio correspondiente al curso de Angular.
-Una vez clonado es necesario instalr las dependencias con el siguiente comando:
+
+Una vez clonado es necesario instalar las dependencias con el siguiente comando:
 
 ```
 $ cd agenda
 $ npm install
 ```
 
-Y por ultimo lanzar la aplicacion en el navegador con:
-
+Y por último, lanzar la aplicación en el navegador con:
 ```
 $ npm start
 ```

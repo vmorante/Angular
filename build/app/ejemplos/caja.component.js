@@ -11,14 +11,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var CajaComponent = (function () {
     function CajaComponent() {
-        //recibimos color como parametro de entrada de los componentes
+        // Recibimos color como parámetro de entrada al componente
         this.color = 'red';
-        //definimos un emisor de   eventos al padre
+        // Definimos un emisor de eventos hacia el padre
         this.encima = new core_1.EventEmitter();
     }
+    // Emitimos un evento al padre
     CajaComponent.prototype.notificar = function () {
-        console.log('raton encima');
-        this.encima.emit("El color de la caja es  " + this.color);
+        this.encima.emit("El color de la caja es " + this.color);
     };
     return CajaComponent;
 }());
@@ -33,8 +33,8 @@ __decorate([
 CajaComponent = __decorate([
     core_1.Component({
         selector: 'caja',
-        template: "<div [style.backgroundColor]=\"color\"\n    (mouseenter)=\"notificar()\"> </div>",
-        styles: ["\n    div{\n        width:100px;\n        height:100px;\n       \n    }\n    "]
+        template: "\n    <div [style.backgroundColor]=\"color\"\n         (mouseenter)=\"notificar()\"></div>",
+        styles: ["\n    div {\n      width: 100px;\n      height: 100px;\n\n    }\n  "]
     })
 ], CajaComponent);
 exports.CajaComponent = CajaComponent;
