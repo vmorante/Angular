@@ -1,49 +1,42 @@
 import { Injectable } from '@angular/core';
 import { Contacto } from '../entidades/contacto';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ContactosService {
 
+  
   //constructor(nombre: string) {
-  constructor() {
+  constructor(private _htpp:Http) {
 
   }
 
-  obtenerContactos(): Contacto[] {
-    return [
-     Contacto.desdeJSON( {
-        id:1,
-        nombre: 'Steve',
-        apellidos:'Jobs',
-        email: 'steve.jobs@apple.com',
-        telefono: '64237846246',
-        twitter:'@steveJobs',
-        facebook :'steveJobs',
-        avatar :''
-      }),
-     Contacto.desdeJSON(  {
-        id:2,
-        nombre: 'Bill',
-        apellidos:'Gates',
-        email: 'bill.gates@microsoft.com',
-        telefono: '21878216381',
-        twitter: 'billgates',
-        facebook:'billgates',
-        avatar :''
+  obtenerContactos(): Observable< Contacto[]> {
+    
+    //return  this._contactos;
+   return  this._htpp
+        .get('http://localhost:3004/contactos')
+        .map(res => {
+          //obtengo la lista de objetos que viene en el body
+          const lista: any[]= res.json();
+          //creo una lista de contactos y la devuelve
+         return  lista.map(elemento =>{
+           return  Contacto.desdeJSON(elemento);
+          })
+        
+        });
+        
 
-      }),
-      Contacto.desdeJSON( {
-        id:3,
-        nombre: 'Elon ',
-        apellidos: 'Musk',
-        email: 'elon.musk@tesla.com',
-        telefono: '981293998711289',
-        twitter:'elonmusk',
-        facebook :'elonmusk',
-        avatar :''
+        
+       
+  }
 
-      })
-    ];
+  guardarContacto(contacto: Contacto): Observable <Contacto>{
+    return this._htpp
+                .post('http://localhost:3004/contactos',contacto)
+                .map(res => Contacto.desdeJSON(res.json()));
   }
 
 }

@@ -10,49 +10,36 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var contacto_1 = require("../entidades/contacto");
+var http_1 = require("@angular/http");
+require("rxjs/add/operator/map");
 var ContactosService = (function () {
     //constructor(nombre: string) {
-    function ContactosService() {
+    function ContactosService(_htpp) {
+        this._htpp = _htpp;
     }
     ContactosService.prototype.obtenerContactos = function () {
-        return [
-            contacto_1.Contacto.desdeJSON({
-                id: 1,
-                nombre: 'Steve',
-                apellidos: 'Jobs',
-                email: 'steve.jobs@apple.com',
-                telefono: '64237846246',
-                twitter: '@steveJobs',
-                facebook: 'steveJobs',
-                avatar: ''
-            }),
-            contacto_1.Contacto.desdeJSON({
-                id: 2,
-                nombre: 'Bill',
-                apellidos: 'Gates',
-                email: 'bill.gates@microsoft.com',
-                telefono: '21878216381',
-                twitter: 'billgates',
-                facebook: 'billgates',
-                avatar: ''
-            }),
-            contacto_1.Contacto.desdeJSON({
-                id: 3,
-                nombre: 'Elon ',
-                apellidos: 'Musk',
-                email: 'elon.musk@tesla.com',
-                telefono: '981293998711289',
-                twitter: 'elonmusk',
-                facebook: 'elonmusk',
-                avatar: ''
-            })
-        ];
+        //return  this._contactos;
+        return this._htpp
+            .get('http://localhost:3004/contactos')
+            .map(function (res) {
+            //obtengo la lista de objetos que viene en el body
+            var lista = res.json();
+            //creo una lista de contactos y la devuelve
+            return lista.map(function (elemento) {
+                return contacto_1.Contacto.desdeJSON(elemento);
+            });
+        });
+    };
+    ContactosService.prototype.guardarContacto = function (contacto) {
+        return this._htpp
+            .post('http://localhost:3004/contactos', contacto)
+            .map(function (res) { return contacto_1.Contacto.desdeJSON(res.json()); });
     };
     return ContactosService;
 }());
 ContactosService = __decorate([
     core_1.Injectable(),
-    __metadata("design:paramtypes", [])
+    __metadata("design:paramtypes", [http_1.Http])
 ], ContactosService);
 exports.ContactosService = ContactosService;
 //# sourceMappingURL=contactos.service.js.map

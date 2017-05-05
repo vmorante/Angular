@@ -1,7 +1,7 @@
 <div *ngIf="contacto">
     <!-- con la ditrectiva *ngIf escribimos o no todo el elemento en el DOM, en la funcion de una expresiom-->
 
-    <img [src]="contacto?.avatar" alt="avatar">
+    <img [src]="contacto?.avatar">
     <!-- Nombre del contacto -->
     <h5>{{ contacto?.nombre }} {{ contacto?.apellido}}</h5>
     <hr>
