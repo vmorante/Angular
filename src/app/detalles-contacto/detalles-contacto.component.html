@@ -1,9 +1,9 @@
-<div *ngIf="contacto">
+<div class="u-full-width" *ngIf="contacto">
     <!-- con la ditrectiva *ngIf escribimos o no todo el elemento en el DOM, en la funcion de una expresiom-->
 
     <img [src]="contacto?.avatar">
     <!-- Nombre del contacto -->
-    <h5>{{ contacto?.nombre }} {{ contacto?.apellido}}</h5>
+    <h5>{{ contacto.nombre }} {{ contacto?.apellidos}}</h5>
     <hr>
 
     <button type="button" (click)="notificarFacebook()">
@@ -17,8 +17,8 @@
   </button>
 
     <!-- Correo del contacto -->
-    <span>{{ contacto?.email }}</span>
+    <span>{{ contacto.email }}</span>
 
     <!-- Telefono del contacto -->
-    <span>{{ contacto?.telefono }}</span>
+    <span>{{ contacto.telefono }}</span>
 </div>

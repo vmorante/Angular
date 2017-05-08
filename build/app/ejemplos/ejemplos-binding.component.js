@@ -35,7 +35,7 @@ var EjemplosBindingComponent = (function () {
 EjemplosBindingComponent = __decorate([
     core_1.Component({
         selector: 'ejemplos-binding',
-        templateUrl: '/app/ejemplos/ejemplos-binding.component.html',
+        templateUrl: './ejemplos-binding.component.html',
         styles: ["\n    .caja {\n      width: 50px;\n      height: 50px;\n      background-color: red;\n    }\n  "]
     })
 ], EjemplosBindingComponent);
