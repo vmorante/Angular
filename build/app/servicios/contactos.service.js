@@ -26,7 +26,7 @@ var ContactosService = (function () {
     ContactosService.prototype.obtenerContactos = function () {
         //return  this._contactos;
         return this._htpp
-            .get(this._direcciones + "/contactos")
+            .get(this._direcciones.servidor + "/contactos")
             .map(function (res) {
             //obtengo la lista de objetos que viene en el body
             var lista = res.json();
@@ -39,26 +39,37 @@ var ContactosService = (function () {
     //creamos un contacto en el servidor
     ContactosService.prototype.guardarContacto = function (contacto) {
         return this._htpp
-            .post(this._direcciones + "/contactos", contacto)
+            .post(this._direcciones.servidor + "/contactos", contacto)
             .map(function (res) { return contacto_1.Contacto.desdeJSON(res.json()); });
     };
     //eliminamos un contacto del servidor
     ContactosService.prototype.eliminarContacto = function (contacto) {
-        return this._htpp.delete(this._direcciones + "/contactos/" + contacto.id)
+        return this._htpp.delete(this._direcciones.servidor + "/contactos/" + contacto.id)
             .map(function (res) { return contacto_1.Contacto.desdeJSON(res.json()); });
     };
     //actualizamos un contacto del servidor
     ContactosService.prototype.editarContacto = function (contacto) {
         return this._htpp
-            .put(this._direcciones + "/contactos/" + contacto.id, contacto)
+            .put(this._direcciones.servidor + "/contactos/" + contacto.id, contacto)
             .map(function (res) { return contacto_1.Contacto.desdeJSON(res.json()); });
+    };
+    ContactosService.prototype.generarRutaAvatar = function () {
+        // http://faker.hook.io/?property=image.avatar
+        return this._htpp
+            .get(this._direcciones.faker)
+            .map(function (res) {
+            var rutaAvatar = res.text();
+            rutaAvatar = rutaAvatar.replace(new RegExp('\"', 'g'), '');
+            console.log(rutaAvatar);
+            return rutaAvatar;
+        });
     };
     return ContactosService;
 }());
 ContactosService = __decorate([
     core_1.Injectable(),
     __param(1, core_1.Inject(direcciones_1.Direcciones)),
-    __metadata("design:paramtypes", [http_1.Http, String])
+    __metadata("design:paramtypes", [http_1.Http, Object])
 ], ContactosService);
 exports.ContactosService = ContactosService;
 //# sourceMappingURL=contactos.service.js.map

@@ -19,6 +19,26 @@
       "facebook": "pepe",
       "avatar": "",
       "id": 2
+    },
+    {
+      "nombre": "Austin",
+      "apellidos": "Powers",
+      "email": "austin@hotmail.com",
+      "telefono": "234234",
+      "twitter": "austinpowers",
+      "facebook": "austinpowers",
+      "avatar": "",
+      "id": 3
+    },
+    {
+      "nombre": "Steve",
+      "apellidos": "Jobs",
+      "email": "steve@apple.com",
+      "telefono": "2342343",
+      "twitter": "stevejobs",
+      "facebook": "stevejobs",
+      "avatar": "https://s3.amazonaws.com/uifaces/faces/twitter/miguelmendes/128.jpg\n",
+      "id": 4
     }
   ]
 }

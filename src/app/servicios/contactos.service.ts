@@ -13,7 +13,7 @@ export class ContactosService {
   //constructor(nombre: string) {
   constructor(
     private _htpp:Http,
-    @Inject(Direcciones) private _direcciones:string
+    @Inject(Direcciones) private _direcciones:any
     ) {
 
   }
@@ -24,7 +24,7 @@ export class ContactosService {
     
     //return  this._contactos;
    return  this._htpp
-        .get(`${this._direcciones}/contactos`)
+        .get(`${this._direcciones.servidor}/contactos`)
         .map(res => {
           //obtengo la lista de objetos que viene en el body
           const lista: any[]= res.json();
@@ -42,7 +42,7 @@ export class ContactosService {
   //creamos un contacto en el servidor
   guardarContacto(contacto: Contacto): Observable <Contacto>{
     return this._htpp
-                .post(`${this._direcciones}/contactos`,contacto)
+                .post(`${this._direcciones.servidor}/contactos`,contacto)
                 .map(res => Contacto.desdeJSON(res.json()));
   }
 
@@ -50,7 +50,7 @@ export class ContactosService {
   //eliminamos un contacto del servidor
 
   eliminarContacto(contacto: Contacto): Observable<Contacto>{
-    return this._htpp.delete(`${this._direcciones}/contactos/${contacto.id}`)
+    return this._htpp.delete(`${this._direcciones.servidor}/contactos/${contacto.id}`)
                       .map(res => Contacto.desdeJSON(res.json()));
   }
   
@@ -60,8 +60,21 @@ export class ContactosService {
   //actualizamos un contacto del servidor
  editarContacto(contacto: Contacto): Observable<Contacto>{
     return this._htpp
-                      .put(`${this._direcciones}/contactos/${contacto.id}`,contacto)
+                      .put(`${this._direcciones.servidor}/contactos/${contacto.id}`,contacto)
                       .map(res => Contacto.desdeJSON(res.json()));
+  }
+
+  generarRutaAvatar():Observable<string>{
+   // http://faker.hook.io/?property=image.avatar
+   return this._htpp
+        .get(this._direcciones.faker)
+        .map(res => {
+          let rutaAvatar = res.text()
+          rutaAvatar =rutaAvatar.replace(new RegExp('\"','g'),'')
+          console.log(rutaAvatar);
+          return rutaAvatar;
+        })
+        
   }
 
 
