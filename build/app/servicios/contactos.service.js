@@ -15,6 +15,7 @@ var core_1 = require("@angular/core");
 var contacto_1 = require("../entidades/contacto");
 var http_1 = require("@angular/http");
 require("rxjs/add/operator/map");
+require("rxjs/add/operator/share");
 var direcciones_1 = require("../configuracion/direcciones.");
 var ContactosService = (function () {
     //constructor(nombre: string) {
@@ -34,7 +35,7 @@ var ContactosService = (function () {
             return lista.map(function (elemento) {
                 return contacto_1.Contacto.desdeJSON(elemento);
             });
-        });
+        }).share();
     };
     //creamos un contacto en el servidor
     ContactosService.prototype.guardarContacto = function (contacto) {
@@ -44,8 +45,7 @@ var ContactosService = (function () {
     };
     //eliminamos un contacto del servidor
     ContactosService.prototype.eliminarContacto = function (contacto) {
-        return this._htpp.delete(this._direcciones.servidor + "/contactos/" + contacto.id)
-            .map(function (res) { return contacto_1.Contacto.desdeJSON(res.json()); });
+        return this._htpp.delete(this._direcciones.servidor + "/contactos/" + contacto.id);
     };
     //actualizamos un contacto del servidor
     ContactosService.prototype.editarContacto = function (contacto) {

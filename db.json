@@ -1,26 +1,6 @@
 {
   "contactos": [
     {
-      "nombre": "Tim",
-      "apellidos": "cook",
-      "email": "tom@gmail.com",
-      "telefono": "34433",
-      "twitter": "tim",
-      "facebook": "tim",
-      "avatar": "",
-      "id": 1
-    },
-    {
-      "nombre": "pepe",
-      "apellidos": "cook",
-      "email": "pepe@gmail.com",
-      "telefono": "3443333",
-      "twitter": "pepe",
-      "facebook": "pepe",
-      "avatar": "",
-      "id": 2
-    },
-    {
       "nombre": "Austin",
       "apellidos": "Powers",
       "email": "austin@hotmail.com",

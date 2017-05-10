@@ -2,6 +2,12 @@
 <!--<ejemplos-componentes></ejemplos-componentes>-->
 <!--<ejemplos-inyeccion></ejemplos-inyeccion>-->
 
+<!--<ejemplos-observables> </ejemplos-observables>
+<ejemplos-obsevables-wikipedia></ejemplos-obsevables-wikipedia>-->
+
+<!--<ejemplos-pipe></ejemplos-pipe>-->
+
+<!--<ejemplos-directivas></ejemplos-directivas>-->
 <div class="container">
 
     <!-- Titulo -->
@@ -9,19 +15,16 @@
         <h1>Mi agenda</h1>
     </header>
 
+    <!-- Barra de navegación -->
     <nav>
         <ul>
-            <li><a routerLink="/mis-contactos" routerLinkACctive="seleccionado">Mis contactos
-            </a></li>
-            <li><a routerLink="/nuevo-contacto">Nuevo contacto</a></li>
+            <li><a routerLink="/mis-contactos" routerLinkActive="seleccionado">Mis contactos</a></li>
+            <li><a routerLink="/nuevo-contacto" routerLinkActive="seleccionado">Nuevo contacto</a></li>
         </ul>
     </nav>
 
-    <!--zona dinamixa de pagina de la aplicacionn-->
-    <router-outlet> </router-outlet>
-
-
-
+    <!-- Zona dinámica de páginas de la aplicación -->
+    <router-outlet></router-outlet>
 
 
 </div>

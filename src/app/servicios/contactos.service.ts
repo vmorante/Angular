@@ -2,6 +2,7 @@ import { Injectable,Inject } from '@angular/core';
 import { Contacto } from '../entidades/contacto';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/share';
 import {Observable} from 'rxjs/Observable';
 import { Direcciones } from '../configuracion/direcciones.';
 
@@ -33,7 +34,7 @@ export class ContactosService {
            return  Contacto.desdeJSON(elemento);
           })
         
-        });
+        }).share();
         
 
         
@@ -49,9 +50,9 @@ export class ContactosService {
 
   //eliminamos un contacto del servidor
 
-  eliminarContacto(contacto: Contacto): Observable<Contacto>{
-    return this._htpp.delete(`${this._direcciones.servidor}/contactos/${contacto.id}`)
-                      .map(res => Contacto.desdeJSON(res.json()));
+  eliminarContacto(contacto: Contacto): Observable<any>{
+    return this._htpp.delete(`${this._direcciones.servidor}/contactos/${contacto.id}`);
+                      
   }
   
 
